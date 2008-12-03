@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<db-define>
+	<db-path>/web-inf/db</db-path>
+	<db-access-filename>demo.mdb</db-access-filename>
+	<db-username></db-username>
+	<db-password></db-password>
+</db-define>

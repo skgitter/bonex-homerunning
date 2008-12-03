@@ -1,0 +1,20 @@
+<!-- SQLName不可重复，SQL名必须放在第一行，SQL文件名段必须放在第二行 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<sql-files>
+    <sql>
+        <name>a1</name>
+        <value>b1</value>
+    </sql>
+    <sql>
+        <name>a2</name>
+        <value>b2</value>
+    </sql>
+    <sql>
+        <name>a3</name>
+        <value>b3</value>
+    </sql>
+    <sql>
+        <name>a4</name>
+        <value>b4</value>
+    </sql>
+</sql-files>
