@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="blog/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="src" path="work"/>
+	<classpathentry kind="src" path="WEB-INF/src/java"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/commons-digester-1.8.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/ezmorph-1.0.4.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/freemarker-2.3.8.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/json-lib-2.2.2-jdk15.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/ognl-2.6.11.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/struts2-core-2.0.11.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/xml-apis-2.0.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/workspace/blog/WEB-INF/lib/xwork-2.0.5.jar"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>
