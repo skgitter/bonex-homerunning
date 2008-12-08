@@ -134,6 +134,7 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 	}
 	
 	/**
+	 * 第一次调用时初始化Dao
 	 * @return the extDao
 	 */
 	public ExtBaseDao getExtDao() throws Exception {
@@ -163,7 +164,12 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 		return null;
 	}
 	
-	public AbstractBaseAction() {
-		
+	/**
+	 * 构造函数 
+	 * @throws Exception
+	 */
+	public AbstractBaseAction() throws Exception{
+		super();
+		getExtDao();
 	}
 }
