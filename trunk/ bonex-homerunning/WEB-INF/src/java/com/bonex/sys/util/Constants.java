@@ -2,10 +2,29 @@ package com.bonex.sys.util;
 
 public class Constants {
 
+	/**
+	 * default to /web-inf/db.xml
+	 */
 	final static public String XML_DB_DEFINITION = "/web-inf/db.xml";
+	
+	/**
+	 * db-path
+	 */
 	final static public String XML_DB_PATH = "db-path";
+	
+	/**
+	 * db-access-filename
+	 */
 	final static public String XML_DB_ACCESS_FILENAME = "db-access-filename";
+	
+	/**
+	 * db-username
+	 */
 	final static public String XML_DB_USERNAME = "db-username";
+	
+	/**
+	 * db-password
+	 */
 	final static public String XML_DB_PASSWORD = "db-password";
 	final static public String FALSE = "false";
 	final static public String TRUE = "true";
