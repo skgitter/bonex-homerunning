@@ -13,6 +13,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.util.ServletContextAware;
 
 import com.bonex.sys.dao.ExtBaseDao;
+import com.bonex.sys.util.Constants;
 import com.opensymphony.xwork2.ActionSupport;
 
 import example.ExampleSupport;
@@ -197,6 +198,13 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 	/**
 	 * 设置DBConfigPath
 	 */
-	abstract public void setDbConfigPath();
+	public final void setDbConfigPath() {
+		dbConfigPath = getContext().getRealPath(Constants.XML_DB_DEFINITION);
+	}
+	
+	public void init() throws Exception {
+		setDbConfigPath();
+		getExtDao();
+	}
 	
 }

@@ -86,9 +86,8 @@ public class Ext extends AbstractBaseAction {
 	 * @throws Exception
 	 */
 	public String initColumn() throws Exception {
+		init();
 		String sql = "SELECT * FROM 帳簿 WHERE 1=0";
-		setDbConfigPath();
-		getExtDao();
 		ResultSet rs = extDao.queryBySql(sql);
 		ResultSetMetaData rsmd = rs.getMetaData();
 		StringBuffer columns = new StringBuffer();
@@ -109,9 +108,8 @@ public class Ext extends AbstractBaseAction {
 	 * @throws Exception
 	 */
 	public String getGridData() throws Exception {
+		init();
 		String sql = "SELECT * FROM 帳簿";
-		setDbConfigPath();
-		getExtDao();
 		ResultSet rs = extDao.queryBySql(sql);
 		int  i = 0;
 		while (rs.next()) {
@@ -124,7 +122,4 @@ public class Ext extends AbstractBaseAction {
 		return null;
 	}
 
-	public void setDbConfigPath() {
-		dbConfigPath = getContext().getRealPath(Constants.XML_DB_DEFINITION);
-	}
 }
