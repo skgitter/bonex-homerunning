@@ -1,10 +1,7 @@
 package example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +9,12 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.bonex.blog.action.AbstractBaseAction;
-import com.bonex.sys.dao.impl.帳簿DaoImpl;
 import com.bonex.sys.util.Constants;
 import com.bonex.sys.util.JSONUtil;
 
 public class Ext extends AbstractBaseAction {
 	
-	public Ext() throws Exception {
+	public Ext() {
 		super();
 	}
 
@@ -104,7 +100,6 @@ public class Ext extends AbstractBaseAction {
 		}
 		columns.setLength(columns.length()-1);
 		String ret = "{success:true,data:[" + columns.toString() + "],count:" + i + "}";
-		System.err.println(ret);
 		response.getWriter().print(ret);
 		return null;
 	}
@@ -131,8 +126,5 @@ public class Ext extends AbstractBaseAction {
 
 	public void setDbConfigPath() {
 		dbConfigPath = getContext().getRealPath(Constants.XML_DB_DEFINITION);
-		System.err.println("1 : " + getContext().getRealPath(Constants.XML_DB_DEFINITION));
-		System.err.println("2 : " + dbConfigPath);
-		
 	}
 }
