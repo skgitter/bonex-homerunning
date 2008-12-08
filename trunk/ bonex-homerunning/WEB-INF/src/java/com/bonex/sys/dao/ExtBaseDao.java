@@ -6,10 +6,20 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import org.apache.log4j.Logger;
+
+import com.bonex.sys.util.Constants;
 import com.bonex.sys.util.StringUtil;
 import com.bonex.sys.util.XMLReader;
 
+import example.ExampleSupport;
+
 public class ExtBaseDao {
+	
+	/**
+	 * log4j
+	 */
+	protected Logger log = Logger.getLogger(ExampleSupport.class);
 	
 	/**
 	 * SQL连接
@@ -43,10 +53,12 @@ public class ExtBaseDao {
 				if (StringUtil.isEmpty(dbAccessFileName)) {
 					throw new Exception("不能访问数据库！DB配置文件错误！");
 				}
-				dbPath = dbPath + File.pathSeparator + dbAccessFileName;
+				dbPath = dbConfig.substring(0,dbConfig.length()-Constants.XML_DB_DEFINITION.length()) + dbPath + File.separator + dbAccessFileName;
 				String url = "jdbc:odbc:driver={Microsoft Access Driver "
 					+ "(*.mdb)};DBQ=" + dbPath;
 				Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+				//log.debug(url);
+				System.err.println(url);
 				setConnection(DriverManager.getConnection(url));
 			}
 		}
@@ -64,11 +76,8 @@ public class ExtBaseDao {
 	 * @return the preparedStatement
 	 */
 	public Statement getStatement() throws Exception {
-		if (getConnection() == null) {
-			throw new Exception("DB连接不能为空");
-		}
 		if (this.statement == null) {
-			this.statement = getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY, ResultSet.FETCH_FORWARD);
+			this.statement = getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		}
 		return statement;
 	}
