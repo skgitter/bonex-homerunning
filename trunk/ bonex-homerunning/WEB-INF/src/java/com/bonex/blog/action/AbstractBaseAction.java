@@ -6,19 +6,25 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.util.ServletContextAware;
 
 import com.bonex.sys.dao.ExtBaseDao;
-import com.bonex.sys.util.Constants;
 import com.opensymphony.xwork2.ActionSupport;
+
+import example.ExampleSupport;
 
 @SuppressWarnings("unchecked")
 abstract public class AbstractBaseAction extends ActionSupport implements
 		SessionAware, RequestAware, ServletResponseAware, ServletContextAware {
 
+	/**
+	 * log4j
+	 */
+	protected Logger log = Logger.getLogger(ExampleSupport.class);
 	/**
 	 * 
 	 */
@@ -27,22 +33,22 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 	/**
 	 * Context
 	 */
-	private ServletContext context = null;
+	protected ServletContext context = null;
 	
 	/**
 	 * Session Map from Struts2
 	 */
-	private Map session = null;
+	protected Map session = null;
 	
 	/**
 	 * Request Map from Struts2
 	 */
-	private Map request = null;
+	protected Map request = null;
 	
 	/**
 	 * Response HttpServletResponse from javax
 	 */
-	private HttpServletResponse response = null;
+	protected HttpServletResponse response = null;
 	
 	/**
 	 * JsonResult all result in Json;
@@ -52,7 +58,7 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 	/**
 	 * Ext JS 用的DAO
 	 */
-	private ExtBaseDao extDao = null;
+	protected ExtBaseDao extDao = null;
 
 	/**
 	 * getSession
@@ -140,7 +146,7 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 	public ExtBaseDao getExtDao() throws Exception {
 		if (extDao == null) {
 			this.extDao = new ExtBaseDao();
-			this.extDao.setDbConfig(getContext().getRealPath(Constants.XML_DB_DEFINITION));
+			this.extDao.setDbConfig(getDbConfigPath());
 			this.extDao.init();
 		}
 		return extDao;
@@ -170,6 +176,26 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 	 */
 	public AbstractBaseAction() throws Exception{
 		super();
-		getExtDao();
+//		setDbConfigPath();
+//		getExtDao();
 	}
+	
+	protected String dbConfigPath  = null;
+
+	/**
+	 * @return the dbConfigPath
+	 */
+	public String getDbConfigPath() {
+		return this.dbConfigPath;
+	};
+
+	/**
+	 * @param dbConfigPath the dbConfigPath to set
+	 */
+	public void setDbConfigPath(String dbConfigPath) {
+		this.dbConfigPath = dbConfigPath;
+	}
+	
+	abstract public void setDbConfigPath();
+	
 }
