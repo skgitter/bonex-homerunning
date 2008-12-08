@@ -174,10 +174,8 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 	 * 构造函数 
 	 * @throws Exception
 	 */
-	public AbstractBaseAction() throws Exception{
+	public AbstractBaseAction() {
 		super();
-//		setDbConfigPath();
-//		getExtDao();
 	}
 	
 	protected String dbConfigPath  = null;
@@ -196,6 +194,9 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 		this.dbConfigPath = dbConfigPath;
 	}
 	
+	/**
+	 * 设置DBConfigPath
+	 */
 	abstract public void setDbConfigPath();
 	
 }
