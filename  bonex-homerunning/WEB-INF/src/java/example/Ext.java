@@ -11,13 +11,17 @@ import java.util.List;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import org.apache.struts2.interceptor.ServletResponseAware;
-
+import com.bonex.blog.action.AbstractBaseAction;
 import com.bonex.sys.dao.impl.帳簿DaoImpl;
+import com.bonex.sys.util.Constants;
 import com.bonex.sys.util.JSONUtil;
 
-public class Ext extends ExampleSupport implements ServletResponseAware {
+public class Ext extends AbstractBaseAction {
 	
+	public Ext() throws Exception {
+		super();
+	}
+
 	/**
 	 * 
 	 */
@@ -68,10 +72,6 @@ public class Ext extends ExampleSupport implements ServletResponseAware {
         } catch (Exception e) {
             result = "ss";
         }
-
-        
-        
-        
         //String x2="{images: [{name: 'Image one', url:'/GetImage.php?id=1', size:46.5, lastmod: new Date(2007, 10, 29)},{name: 'Image Two', url:'/GetImage.php?id=2', size:43.2, lastmod: new Date(2007, 10, 30)}]}";
 		String x2="{success:true,words: [{word:'Fuck Struts2 and ExtJs'}]}";
         //result=x2;
@@ -91,14 +91,9 @@ public class Ext extends ExampleSupport implements ServletResponseAware {
 	 */
 	public String initColumn() throws Exception {
 		String sql = "SELECT * FROM 帳簿 WHERE 1=0";
-		Connection conn = null;
-		String url = "jdbc:odbc:driver={Microsoft Access Driver "
-			+ "(*.mdb)};DBQ=" + getDBPath();
-		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-		conn = DriverManager.getConnection(url);
-		System.err.println(conn == null);
-		Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-		ResultSet rs = stmt.executeQuery(sql);
+		setDbConfigPath();
+		getExtDao();
+		ResultSet rs = extDao.queryBySql(sql);
 		ResultSetMetaData rsmd = rs.getMetaData();
 		StringBuffer columns = new StringBuffer();
 		String colName = null;
@@ -120,14 +115,9 @@ public class Ext extends ExampleSupport implements ServletResponseAware {
 	 */
 	public String getGridData() throws Exception {
 		String sql = "SELECT * FROM 帳簿";
-		Connection conn = null;
-		String url = "jdbc:odbc:driver={Microsoft Access Driver "
-			+ "(*.mdb)};DBQ=" + getDBPath();
-		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-		conn = DriverManager.getConnection(url);
-		System.err.println(conn == null);
-		Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-		ResultSet rs = stmt.executeQuery(sql);
+		setDbConfigPath();
+		getExtDao();
+		ResultSet rs = extDao.queryBySql(sql);
 		int  i = 0;
 		while (rs.next()) {
 			i++;
@@ -139,7 +129,10 @@ public class Ext extends ExampleSupport implements ServletResponseAware {
 		return null;
 	}
 
-	public void setDao() {
-		this.dao = new 帳簿DaoImpl(getDBPath());
+	public void setDbConfigPath() {
+		dbConfigPath = getContext().getRealPath(Constants.XML_DB_DEFINITION);
+		System.err.println("1 : " + getContext().getRealPath(Constants.XML_DB_DEFINITION));
+		System.err.println("2 : " + dbConfigPath);
+		
 	}
 }
