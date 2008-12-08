@@ -33,9 +33,9 @@ public class JSONUtil {
 				joa.add(element);
 				totalLength ++;
 			}
-			jo.accumulate("data", joa);
-			jo.accumulate("rows", totalLength);
 			jo.accumulate("result", "success");
+			jo.accumulate("rows", totalLength);
+			jo.accumulate("data", joa);
 		} catch (SQLException e) {
 			jo.accumulate("result", "failure");
 			jo.accumulate("error", e.getMessage());
