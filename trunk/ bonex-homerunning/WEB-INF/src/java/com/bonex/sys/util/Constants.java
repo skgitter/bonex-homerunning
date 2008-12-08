@@ -1,11 +1,13 @@
 package com.bonex.sys.util;
 
+import java.io.File;
+
 public class Constants {
 
 	/**
-	 * default to /web-inf/db.xml
+	 * default to \web-inf\db.xml
 	 */
-	final static public String XML_DB_DEFINITION = "/web-inf/db.xml";
+	final static public String XML_DB_DEFINITION = File.separator + "web-inf" + File.separator + "db.xml";
 	
 	/**
 	 * db-path
