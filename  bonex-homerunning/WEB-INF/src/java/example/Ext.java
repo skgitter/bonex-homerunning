@@ -9,7 +9,6 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.bonex.blog.action.AbstractBaseAction;
-import com.bonex.sys.util.Constants;
 import com.bonex.sys.util.JSONUtil;
 
 public class Ext extends AbstractBaseAction {
