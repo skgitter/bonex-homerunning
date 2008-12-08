@@ -26,11 +26,14 @@
 		<action name="Menus" class="example.MenuAction">
 			<result>/example/Menu.jsp</result>
 		</action>
-		<action name="*_*" class="example.ExampleSupport"
+<!-- 		<action name="*_*" class="example.ExampleSupport"
 			method="{2}">
 			<result>/example/{1}.jsp</result>
-		</action>
-
+		</action> -->
+        <action name = "*_*" class = "com.bonex.blog.action.AbstractBaseAction"
+            method = "{2}">
+            <result>/example/{1}.jsp</result>
+        </action>
 		<!-- Add actions here -->
 	</package>
 </struts>
