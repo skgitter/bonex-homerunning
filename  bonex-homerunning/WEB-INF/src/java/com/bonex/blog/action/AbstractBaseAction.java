@@ -6,8 +6,6 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
-
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -28,18 +26,22 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 	 * Context
 	 */
 	private ServletContext context;
+	
 	/**
 	 * Session Map from Struts2
 	 */
 	private Map session;
+	
 	/**
 	 * Request Map from Struts2
 	 */
 	private Map request;
+	
 	/**
 	 * Response HttpServletResponse from javax
 	 */
-	private HttpServletResponse servletResponse;
+	private HttpServletResponse response;
+	
 	/**
 	 * JsonResult all result in Json;
 	 */
@@ -70,6 +72,7 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 
 	/**
 	 * setRequest
+	 * @param Map
 	 */
 	public void setRequest(Map request) {
 		this.request = request;
@@ -77,23 +80,23 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 
 	/**
 	 * getServletResponse
-	 * @return
+	 * @return HttpServletResponse
 	 */
-	public HttpServletResponse getServletResponse() {
-		return servletResponse;
+	public HttpServletResponse getResponse() {
+		return response;
 	}
 
 	/**
 	 * setServletResponse
 	 */
 	public void setServletResponse(HttpServletResponse servletResponse) {
-		this.servletResponse = servletResponse;
-		this.servletResponse.setCharacterEncoding("UTF-8");
+		this.response = servletResponse;
+		this.response.setCharacterEncoding("UTF-8");
 	}
 
 	/**
 	 * getJsonResult
-	 * @return
+	 * @return String
 	 */
 	public String getJsonResult() {
 		return jsonResult;
@@ -109,6 +112,7 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 	
 	/**
 	 * setServletContext
+	 * @param ServletContext
 	 */
 	public void setServletContext(ServletContext context) {
 		this.context = context;
@@ -116,28 +120,20 @@ abstract public class AbstractBaseAction extends ActionSupport implements
 
 	/**
 	 * getServletContext
-	 * @return
+	 * @return ServletContext
 	 */
-	public ServletContext getServletContext() {
+	public ServletContext getContext() {
 		return this.context;
 	}
 	
 	/**
-	 * 主入口。一般不做操作
+	 * 主入口。一般不使用
+	 * @return String
+	 * @throws Exception
 	 */
 	public String execute() throws Exception {
-		PrintWriter writer = getServletResponse().getWriter();
-		JSONArray jsonObject = JSONArray.fromObject(doProcess());
-		try {
-			setJsonResult(jsonObject.toString());
-		} catch (Exception e) {
-			setJsonResult("FAILURE IN CONVERTING.");
-		}
+		PrintWriter writer = getResponse().getWriter();
 		writer.write(getJsonResult());
 		return null;
 	}
-
-	abstract Object doProcess();
-
-
 }
