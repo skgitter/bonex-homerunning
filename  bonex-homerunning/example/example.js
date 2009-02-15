@@ -5,7 +5,6 @@
  *
  * http://extjs.com/license
  */
-
 Ext.onReady(function(){
     // shorthand
     var Tree = Ext.tree;
